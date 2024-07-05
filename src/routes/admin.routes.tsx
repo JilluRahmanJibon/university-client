@@ -3,21 +3,15 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
-import { NavLink } from "react-router-dom";
-import { UserRoutes } from "../utils/utils";
-type TRoute = {
-	path?: string;
-	element?: ReactNode;
-	children?: TRoute[];
-};
+ 
 
-type TAdminSidebarItem = {
+export type TAdminSidebarItem = {
 	key: string;
 	label: ReactNode;
 	children?: TAdminSidebarItem[];
 };
 
-const adminPaths = [
+export const adminPaths = [
 	{
 		name: "Dashboard",
 		path: "dashboard",
@@ -47,30 +41,29 @@ const adminPaths = [
 
 // programmatical way
 
-export const adminRoutes: TRoute[] = UserRoutes(adminPaths);
 
-export const adminSidebarItems = adminPaths.reduce(
-	(acc: TAdminSidebarItem[], item) => {
-		if (item.path && item.name) {
-			acc.push({
-				key: item.name,
-				label: <NavLink to={`/admin/${item.path}`}>{item.name}</NavLink>,
-			});
-		}
-		if (item.children) {
-			acc.push({
-				key: item.name,
-				label: item.name,
-				children: item.children.map(child => ({
-					key: child.name,
-					label: <NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>,
-				})),
-			});
-		}
-		return acc;
-	},
-	[]
-);
+// export const adminSidebarItems = adminPaths.reduce(
+// 	(acc: TAdminSidebarItem[], item) => {
+// 		if (item.path && item.name) {
+// 			acc.push({
+// 				key: item.name,
+// 				label: <NavLink to={`/admin/${item.path}`}>{item.name}</NavLink>,
+// 			});
+// 		}
+// 		if (item.children) {
+// 			acc.push({
+// 				key: item.name,
+// 				label: item.name,
+// 				children: item.children.map(child => ({
+// 					key: child.name,
+// 					label: <NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>,
+// 				})),
+// 			});
+// 		}
+// 		return acc;
+// 	},
+// 	[]
+// );
 
 //! Hard coded way
 // const adminPaths
