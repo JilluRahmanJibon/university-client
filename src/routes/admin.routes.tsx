@@ -3,7 +3,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
- 
+import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester";
 
 export type TAdminSidebarItem = {
 	key: string;
@@ -16,6 +16,16 @@ export const adminPaths = [
 		name: "Dashboard",
 		path: "dashboard",
 		element: <AdminDashboard />,
+	},
+	{
+		name: "Academic  Management",
+		children: [
+			{
+				name: "Academic Semesters",
+				path: "academic-semesters",
+				element: <AcademicSemester />,
+			},
+		],
 	},
 	{
 		name: "User Management",
@@ -40,7 +50,6 @@ export const adminPaths = [
 ];
 
 // programmatical way
-
 
 // export const adminSidebarItems = adminPaths.reduce(
 // 	(acc: TAdminSidebarItem[], item) => {
